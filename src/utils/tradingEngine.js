@@ -245,6 +245,20 @@ export function combineAnalyses(analyses) {
   };
 }
 
+function buildAnalysisSnapshot(analyses, ensemble, initial = false) {
+  return {
+    analyses,
+    ensemble,
+    headline: initial
+      ? 'Ready to trade'
+      : ensemble.signal === BUY
+        ? 'Ensemble is leaning long'
+        : ensemble.signal === SELL
+          ? 'Ensemble is leaning defensive'
+          : 'Ensemble is neutral',
+  };
+}
+
 function recordSnapshot(session, series, index, analyses, ensemble) {
   const currentPrice = series[index].close;
   const positionValue = session.positionSize * currentPrice;
@@ -264,16 +278,7 @@ function recordSnapshot(session, series, index, analyses, ensemble) {
     winRate: session.closedTrades > 0 ? (session.wins / session.closedTrades) * 100 : 0,
     maxEquity,
     maxDrawdown: Math.max(session.maxDrawdown, drawdown),
-    lastAnalysis: {
-      analyses,
-      ensemble,
-      headline:
-        ensemble.signal === BUY
-          ? 'Ensemble is leaning long'
-          : ensemble.signal === SELL
-            ? 'Ensemble is leaning defensive'
-            : 'Ensemble is neutral',
-    },
+    lastAnalysis: buildAnalysisSnapshot(analyses, ensemble),
     equityCurve: [
       ...session.equityCurve,
       {
@@ -406,13 +411,20 @@ export function createSimulationState(series, selectedModels) {
         price: series[index].close,
       },
     ],
-    lastAnalysis: {
-      analyses,
-      ensemble,
-      headline: 'Ready to trade',
-    },
+    lastAnalysis: buildAnalysisSnapshot(analyses, ensemble, true),
     isComplete: index >= series.length - 1,
     selectedModels,
+  };
+}
+
+export function refreshSessionAnalysis(session, selectedModels) {
+  const analyses = getModelAnalyses(session.series, session.index, selectedModels);
+  const ensemble = combineAnalyses(analyses);
+
+  return {
+    ...session,
+    selectedModels,
+    lastAnalysis: buildAnalysisSnapshot(analyses, ensemble, session.tradeLog.length === 0),
   };
 }
 

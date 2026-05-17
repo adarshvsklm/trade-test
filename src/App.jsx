@@ -20,6 +20,7 @@ import {
   STARTING_CAPITAL,
   advanceSimulation,
   createSimulationState,
+  refreshSessionAnalysis,
   runBacktest,
 } from './utils/tradingEngine';
 
@@ -93,6 +94,15 @@ export default function App() {
     setBacktestResult(null);
     setIsTrading(false);
   }, [symbol]);
+
+  useEffect(() => {
+    setSession((currentSession) => refreshSessionAnalysis(currentSession, selectedModels));
+    setBacktestResult(null);
+  }, [selectedModels]);
+
+  useEffect(() => {
+    setBacktestResult(null);
+  }, [riskProfile]);
 
   useEffect(() => {
     if (!isTrading) {
