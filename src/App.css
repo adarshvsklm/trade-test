@@ -1,0 +1,226 @@
+.app {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  display: grid;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+}
+
+.header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.45rem;
+}
+
+.header p {
+  margin: 0;
+  max-width: 56ch;
+  color: #cbd5e1;
+}
+
+.market-meta {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.75rem;
+}
+
+.stat-card {
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #0f172a;
+  padding: 0.75rem;
+  min-height: 72px;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  border-radius: 16px;
+  border: 1px solid #1f2937;
+  background: #0b1224;
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.field {
+  margin-bottom: 0.85rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.field input[type='number'] {
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.5rem;
+}
+
+.field input[type='range'] {
+  width: 100%;
+}
+
+.models {
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.model-option {
+  display: flex;
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.4rem 0;
+}
+
+.model-option span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.model-option small {
+  color: #94a3b8;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+button {
+  border: 1px solid #2563eb;
+  background: #1d4ed8;
+  color: #f8fafc;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.chart-stack {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.chart-card {
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.6rem;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-card-header h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.line-chart {
+  width: 100%;
+  height: 160px;
+  background: #020617;
+  border-radius: 8px;
+}
+
+.empty-chart {
+  min-height: 90px;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+  border: 1px dashed #334155;
+  border-radius: 8px;
+}
+
+.signal-box {
+  margin-top: 0.85rem;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.signal-box h3 {
+  margin-top: 0;
+}
+
+.signal-table table,
+.panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.panel table th,
+.panel table td {
+  border-bottom: 1px solid #1f2937;
+  padding: 0.45rem 0.25rem;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.backtest p {
+  color: #cbd5e1;
+}
+
+.backtest-result {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
