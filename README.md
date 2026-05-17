@@ -136,6 +136,23 @@ dropdown automatically.
 | POST   | `/api/trader/reset`      | Reset capital and trade log. |
 | GET    | `/api/trader/state`      | Poll current state (equity, PnL, position, recent trades). |
 
+## Static landing page (GitHub Pages)
+
+This repo also ships a small static landing page at the root (`index.html`,
+`styles.css`, `app.js`) that is auto-deployed by
+`.github/workflows/deploy.yml` to GitHub Pages on every push to `main`.
+
+To enable it once, go to **Settings → Pages → Build and deployment** and choose
+**GitHub Actions** as the source. The page becomes available at
+`https://<owner>.github.io/<repo>/`.
+
+## Variants
+
+The `variants/` directory archives alternative implementations of the trading
+agent that were developed on other branches. They are kept side-by-side so no
+work is lost; the primary, supported app remains the one in `backend/` and
+`frontend/` at the repo root.
+
 ## Notes & disclaimer
 
 This project is for research / education. None of the included models constitute

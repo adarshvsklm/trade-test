@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trade Test — A simple trading demo</title>
+    <meta
+      name="description"
+      content="Trade Test — a tiny static demo site, deployed automatically via GitHub Pages."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        Trade<span class="brand-accent">Test</span>
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#ticker">Markets</a>
+        <a
+          href="https://github.com/adarshvsklm/trade-test"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="pill">
+            <span class="dot"></span> Live demo · deployed via GitHub Pages
+          </span>
+          <h1>
+            Trade smarter.<br />
+            <span class="gradient-text">Move faster.</span>
+          </h1>
+          <p class="lede">
+            A tiny, static landing page for the
+            <code>trade-test</code> repository — built and shipped automatically
+            from <code>main</code> by GitHub Actions.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#ticker">View live ticker</a>
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/adarshvsklm/trade-test"
+              target="_blank"
+              rel="noopener"
+              >Source on GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="card-head">
+            <div class="card-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="card-title">portfolio.demo</div>
+          </div>
+          <div class="card-body">
+            <div class="balance">
+              <div class="label">Total balance</div>
+              <div class="amount">$128,402<span class="cents">.57</span></div>
+              <div class="delta up">▲ +2.41% today</div>
+            </div>
+            <svg
+              class="sparkline"
+              viewBox="0 0 300 80"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#22d3ee" stop-opacity=".5" />
+                  <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0,60 L25,55 L50,58 L75,40 L100,45 L125,30 L150,38 L175,22 L200,28 L225,18 L250,24 L275,12 L300,16 L300,80 L0,80 Z"
+                fill="url(#g)"
+              />
+              <path
+                d="M0,60 L25,55 L50,58 L75,40 L100,45 L125,30 L150,38 L175,22 L200,28 L225,18 L250,24 L275,12 L300,16"
+                fill="none"
+                stroke="#22d3ee"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <h2>What's inside</h2>
+        <div class="grid">
+          <article class="feature">
+            <div class="icon">⚡</div>
+            <h3>Zero-config deploy</h3>
+            <p>
+              Push to <code>main</code> and a GitHub Actions workflow publishes
+              this static site automatically.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="icon">🎨</div>
+            <h3>Modern, responsive UI</h3>
+            <p>
+              Built with plain HTML, CSS and a sprinkle of JavaScript — no
+              framework, no build step.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="icon">📈</div>
+            <h3>Ready to extend</h3>
+            <p>
+              Drop in your charts, auth, or backend APIs. This page is a
+              starting point you can grow from.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="ticker" class="ticker-section">
+        <h2>Demo ticker</h2>
+        <p class="muted">
+          Fake prices, updated client-side every second — just to show the page
+          is alive.
+        </p>
+        <div class="ticker" id="ticker"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Built with care · <a href="https://github.com/adarshvsklm/trade-test"
+          >adarshvsklm/trade-test</a
+        >
+      </p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
