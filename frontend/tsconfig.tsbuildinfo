@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/api.ts","./src/main.tsx","./src/vite-env.d.ts","./src/components/Backtester.tsx","./src/components/EquityChart.tsx","./src/components/Kpi.tsx","./src/components/LiveTrader.tsx","./src/components/StrategyPicker.tsx"],"version":"5.9.3"}
