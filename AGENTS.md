@@ -1,11 +1,40 @@
 # AGENTS.md
 
-## Cursor Cloud specific instructions
+## Project layout
 
-This repository (`trade-test`) is currently a blank/empty project with only a `README.md`. There are no services, dependencies, build systems, or applications to run.
+- `backend/` — FastAPI API (`uvicorn app.main:app` from `backend/`)
+- `frontend/` — React + Vite + TypeScript dashboard
+- `api/index.py` — Vercel serverless entrypoint (imports `backend/app`)
+- `vercel.json` — Vercel build, rewrites, and function settings
 
-- **No package manager or build tool** is configured yet.
-- **No linting, testing, or CI/CD** is set up.
-- **No services** need to be started.
+## Local development
 
-Once application code is added to this repository, this file should be updated with relevant development instructions (how to install dependencies, run services, lint, test, and build).
+**Backend** (Python 3.10+):
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+**Frontend** (Node 18+):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Dev server: `http://127.0.0.1:5173` (proxies `/api` to port 8000).
+
+## Vercel
+
+Deploy from the repo root; `vercel.json` handles install/build/output. Root
+`requirements.txt` is for the Python function (keep aligned with
+`backend/requirements.txt`).
+
+## Variants
+
+`variants/` holds archived alternate implementations; not part of the primary app.

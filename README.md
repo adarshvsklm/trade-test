@@ -136,6 +136,40 @@ dropdown automatically.
 | POST   | `/api/trader/reset`      | Reset capital and trade log. |
 | GET    | `/api/trader/state`      | Poll current state (equity, PnL, position, recent trades). |
 
+## Deploy on Vercel
+
+The repo includes a root [`vercel.json`](vercel.json) that builds the React app and
+routes `/api/*` to the FastAPI backend as a Python serverless function.
+
+**One-click / dashboard**
+
+1. Import the repository in [Vercel](https://vercel.com/new).
+2. Leave the root directory as `.` (defaults from `vercel.json` apply).
+3. Deploy. No extra env vars are required for same-origin API calls
+   (`VITE_API_BASE` is set to an empty string in `vercel.json`).
+
+**CLI**
+
+```bash
+npm i -g vercel
+vercel          # preview
+vercel --prod   # production
+```
+
+**Frontend only**
+
+To host only the UI on Vercel and run the API elsewhere (Railway, Render, a VPS,
+etc.), remove or adjust the `/api` rewrite in `vercel.json`, set
+`VITE_API_BASE` in the Vercel project settings to your API origin (see
+`frontend/.env.example`), and redeploy.
+
+**Serverless limitations**
+
+Backtests and read-only endpoints work well on Vercel. The **live paper trader**
+uses an in-process background thread and in-memory state, which does not persist
+across serverless invocations — use a long-running host for `uvicorn` if you need
+continuous paper trading.
+
 ## Static landing page (GitHub Pages)
 
 This repo also ships a small static landing page at the root (`index.html`,
